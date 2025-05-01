@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -15,7 +16,13 @@ export class AstronomicalEventsPage implements OnInit {
   apod: any;
   error: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private navCtrl: NavController) {}
+
+  // Optionally, you can programmatically navigate back using navCtrl
+  goBack() {
+    this.navCtrl.back();
+  }
+  
 
   ngOnInit() {
     this.fetchAstronomyPicture();
