@@ -1,22 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>StellarScope</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- Astronomical Objects Page (Programmatic Navigation) -->
-  <ion-button expand="block" (click)="goToAstroObjects()">
-    Explore the Sky
-  </ion-button>
-
-  <!-- Astronomical Events Page (Programmatic Navigation) -->
-  <ion-button expand="block" (click)="goToAstronomicalEvents()">
-    Astronomical Events
-  </ion-button>
-
-  <!-- Sun & Moon Info Page (Programmatic Navigation) -->
-  <ion-button expand="block" (click)="goToSunMoonInfo()">
-    Sun & Moon Info
-  </ion-button>
+  <ion-button (click)="goToAstroObjects()">Explore the Sky</ion-button>
+  <ion-button (click)="goToAstronomicalEvents()">Astronomy of the Day</ion-button>
+  <ion-button (click)="goToSunMoonInfo()">Sun & Moon</ion-button>
 </ion-content>

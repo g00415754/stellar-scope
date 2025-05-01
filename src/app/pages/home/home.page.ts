@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import { NavController } from '@ionic/angular';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +13,11 @@ import { NavController } from '@ionic/angular';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, CommonModule, FormsModule]
 })
 export class HomePage {
+  constructor(private navCtrl: NavController, private location: Location) {}
 
-  constructor(private navCtrl: NavController) {}
+  goBack() {
+    this.location.back();
+  }
 
   goToAstroObjects() {
     this.navCtrl.navigateForward('/astronomical-objects');
