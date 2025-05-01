@@ -1,11 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-back-button>Back</ion-back-button>
-    <ion-title>Astronomical Objects</ion-title>
+    <!-- The back button should be at the top of the screen -->
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title class="center-title">Explore the Sky</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <!-- Embed Stellarium Web using iframe -->
-  <iframe src="https://stellarium-web.org" style="height: 80vh; width: 100%; border: none;"></iframe>
+<ion-content class="ion-padding center-content">
+  <div class="content-wrapper">
+    <h1>Discover the Stars that Light Up the Night Sky</h1><br>
+    <p>Zoom in to explore individual stars, or switch to a different location to see how the night sky looks from across
+      the globe.</p>
+
+    <!-- Embed Stellarium Web using iframe -->
+    <iframe src="https://stellarium-web.org" style="height: 80vh; width: 95%; border: none;"></iframe>
+
+    <br><br>
+    <h2>Get the Most Out of Your Skywatching Experience</h2>
+    <p>While you explore the night sky with Stellarium, here are a few tips to help you with real-life stargazing:</p>
+    <ul>
+      <li><b>Find a Dark Location:</b> The further you are from city lights, the clearer the sky will be.</li>
+    </ul>
+    <ul>
+      <li><b>Use a Red Light:</b> If you need to read a map or adjust your equipment at night, use a red flashlight to
+        preserve your night vision.</li>
+    </ul>
+    <ul>
+      <li><b>Take Your Time:</b> Stargazing is about patience. Take your time to observe the objects you see and try to
+        connect the dots between constellations.</li>
+    </ul>
+  </div>
 </ion-content>

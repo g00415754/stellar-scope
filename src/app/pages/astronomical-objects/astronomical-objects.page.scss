@@ -1,0 +1,36 @@
+.center-title {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally centers content */
+    justify-content: center; /* Vertically centers content */
+    height: 100%;
+  }
+  
+  .content-wrapper {
+    text-align: center; /* Centers text inside the content wrapper */
+  }
+  
+  iframe {
+    margin-top: 20px; /* Adds space between text and iframe */
+    border-radius: 8px; /* Optional: Adds rounded corners to the iframe */
+  }
+  
+
+ul {
+    list-style-position: inside; /* Makes the list bullets inside the list box */
+    padding: 0; /* Removes the default padding */
+    margin: 0; /* Removes the default margin */
+    display: inline-block; /* Makes the list behave like an inline-block element to center it */
+    text-align: left; /* Aligns the text inside the list to the left */
+  }
+  
+  li {
+    margin-bottom: 10px; /* Adds space between the list items */
+    text-align: center; /* Ensures text inside the list items is centered */
+  }

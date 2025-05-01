@@ -13,4 +13,3 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton } from '@ion
 export class AstronomicalObjectsPage {
 
 }
-
