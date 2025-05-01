@@ -1,11 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title class="center-title">Stellar Scope</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-button (click)="goToAstroObjects()">Explore the Sky</ion-button>
-  <ion-button (click)="goToAstronomicalEvents()">Astronomy of the Day</ion-button>
-  <ion-button (click)="goToSunMoonInfo()">Sun & Moon</ion-button>
-</ion-content>
+  <ion-content class="ion-padding content-centered">
+    <div class="card-wrapper">
+      <!-- Card 1 -->
+      <ion-card class="ion-no-margin card-bg">
+        <div class="card-text-wrapper">
+          <h5 class="card-title">Explore the Sky</h5>
+          <p class="card-text">
+            Discover the wonders of the night sky, from stars to constellations.
+          </p>
+          <ion-button expand="block" (click)="goToAstroObjects()">Explore</ion-button>
+        </div>
+      </ion-card>
+  
+      <!-- Card 2 -->
+      <ion-card class="ion-no-margin card-bg">
+        <div class="card-text-wrapper">
+          <h5 class="card-title">Astronomy of the Day</h5>
+          <p class="card-text">
+            Learn about celestial events happening today and stay updated with astronomy news.
+          </p>
+          <ion-button expand="block" (click)="goToAstronomicalEvents()">Explore</ion-button>
+        </div>
+      </ion-card>
+  
+      <!-- Card 3 -->
+      <ion-card class="ion-no-margin card-bg">
+        <div class="card-text-wrapper">
+          <h5 class="card-title">Sun & Moon</h5>
+          <p class="card-text">
+            Get the latest information about the sunrise, sunset, moonrise, and moon phases.
+          </p>
+          <ion-button expand="block" (click)="goToSunMoonInfo()">Explore</ion-button>
+        </div>
+      </ion-card>
+    </div>
+  </ion-content>
+  
