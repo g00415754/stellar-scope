@@ -1,7 +1,13 @@
 {
-  "name": "stellar-scope",
+  "name": "StellarScope",
+  "type": "angular",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
-  "type": "angular-standalone"
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://api.astronomyapi.com"
+    }
+  ]
 }

@@ -1,20 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCardHeader } from '@ionic/angular/standalone';
+import { IonCard, IonCardContent, IonCardTitle, IonSpinner } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sun-moon-info',
   templateUrl: './sun-moon-info.page.html',
   styleUrls: ['./sun-moon-info.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonCardTitle, IonCardContent, IonSpinner, IonTitle, IonToolbar, IonCard, IonCardHeader, FormsModule, CommonModule]
 })
 export class SunMoonInfoPage implements OnInit {
+  data: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-  }
+    const lat = 53.2707; // Galway latitude
+    const lon = -9.0568; // Galway longitude
+    const apiKey = '9aa41f9521c344b889116ecee579f764'; // <-- Paste your key here
 
+    const url = `https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&lat=${lat}&long=${lon}`;
+
+    this.http.get(url).subscribe(
+      res => this.data = res,
+      err => console.error('Error fetching astronomy data:', err)
+    );
+  }
 }

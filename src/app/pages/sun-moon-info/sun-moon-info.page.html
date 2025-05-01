@@ -1,13 +1,24 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>sun-moon-info</ion-title>
+    <ion-title>Sun & Moon Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">sun-moon-info</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <ion-card *ngIf="data">
+    <ion-card-header>
+      <ion-card-title>Astronomy for Galway</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Sunrise:</strong> {{ data.sunrise }}</p>
+      <p><strong>Sunset:</strong> {{ data.sunset }}</p>
+      <p><strong>Moonrise:</strong> {{ data.moonrise }}</p>
+      <p><strong>Moonset:</strong> {{ data.moonset }}</p>
+      <p><strong>Moon Phase:</strong> {{ data.moon_phase }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-spinner *ngIf="!data"></ion-spinner>
+
 </ion-content>

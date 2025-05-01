@@ -1,0 +1,18 @@
+.astro-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  background: linear-gradient(145deg, #fdf6e3, #fffbe6);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.astro-image {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 10px auto 0;
+}
