@@ -100,4 +100,11 @@ export class AstronomicalObjectsPage {
     }
   ];
   
+  selectedType: string = '';
+
+get filteredObjects() {
+  if (!this.selectedType) return this.featuredObjects;
+  return this.featuredObjects.filter(obj => obj.type === this.selectedType);
+}
+
 }

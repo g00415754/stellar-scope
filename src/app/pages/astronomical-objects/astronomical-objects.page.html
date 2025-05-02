@@ -14,18 +14,32 @@
   <ion-button expand="full" (click)="openStellariumModal()" class="gradient-border-button" fill="clear">View Celestial Map</ion-button>
 
   <br><br><br>
+
+  <ion-item>
+    <ion-label>Filter by Type</ion-label>
+    <ion-select [(ngModel)]="selectedType" placeholder="All Types">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="Planet">Planet</ion-select-option>
+      <ion-select-option value="Star">Star</ion-select-option>
+      <ion-select-option value="Galaxy">Galaxy</ion-select-option>
+      <ion-select-option value="Nebula">Nebula</ion-select-option>
+      <ion-select-option value="Star Cluster">Star Cluster</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
   <ion-grid>
     <ion-row>
-      <ion-col size="12" size-sm="6" size-md="4" *ngFor="let obj of featuredObjects">
-        <a [href]="obj.link" target="_blank" rel="noopener noreferrer">
+      <ion-col size="12" size-sm="6" size-md="4" *ngFor="let object of filteredObjects">
+
+        <a [href]="object.link" target="_blank" rel="noopener noreferrer">
           <ion-card class="object-card">
             <ion-card-header>
-              <ion-card-title>{{ obj.name }}</ion-card-title>
-              <p class="object-subtitle">{{ obj.type }} • Best viewed: {{ obj.viewTime }}</p>
+              <ion-card-title>{{ object.name }}</ion-card-title>
+              <p class="object-subtitle">{{ object.type }} • Best viewed: {{ object.viewTime }}</p>
             </ion-card-header>
             <ion-card-content>
-              <img *ngIf="obj.imageUrl" [src]="obj.imageUrl" alt="{{ obj.name }}" class="object-img" />
-              <p>{{ obj.description }}</p>
+              <img *ngIf="object.imageUrl" [src]="object.imageUrl" alt="{{ object.name }}" class="object-img" />
+              <p>{{ object.description }}</p>
             </ion-card-content>
           </ion-card>
         </a>
