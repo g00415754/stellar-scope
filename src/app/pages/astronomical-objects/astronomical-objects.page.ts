@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
@@ -13,7 +13,7 @@ import { StellariumModalComponent } from '../../stellarium-modal/stellarium-moda
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class AstronomicalObjectsPage {
+export class AstronomicalObjectsPage implements OnInit{
 
   constructor(private modalController: ModalController) {}
 
@@ -102,9 +102,38 @@ export class AstronomicalObjectsPage {
   
   selectedType: string = '';
 
-get filteredObjects() {
-  if (!this.selectedType) return this.featuredObjects;
-  return this.featuredObjects.filter(obj => obj.type === this.selectedType);
-}
+  get filteredObjects() {
+    if (!this.selectedType) return this.featuredObjects;
+    return this.featuredObjects.filter(obj => obj.type === this.selectedType);
+  }
 
+  favourites: Set<string> = new Set();
+
+  ngOnInit() {
+    this.loadFavourites();
+  }
+
+  toggleFavourite(objectName: string) {
+    if (this.favourites.has(objectName)) {
+      this.favourites.delete(objectName);
+    } else {
+      this.favourites.add(objectName);
+    }
+    this.saveFavourites();
+  }
+
+  isFavourite(objectName: string): boolean {
+    return this.favourites.has(objectName);
+  }
+
+  saveFavourites() {
+    localStorage.setItem('favouriteObjects', JSON.stringify([...this.favourites]));
+  }
+
+  loadFavourites() {
+    const saved = localStorage.getItem('favouriteObjects');
+    if (saved) {
+      this.favourites = new Set(JSON.parse(saved));
+    }
+  }
 }
