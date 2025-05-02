@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular'; 
+
 import { StellariumModalComponent } from '../../stellarium-modal/stellarium-modal.component';
 
 @Component({

@@ -102,3 +102,41 @@ ul {
   border-radius: 5px;
   }
   
+
+  .tips-card {
+    border: 1px solid #3e5c76;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 850px;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 4px;
+  }
+  
+  .tips-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 16px;
+  }
+  
+  .tips-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .tips-list ion-icon {
+    color: #1367ac;
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+
+  
+  
