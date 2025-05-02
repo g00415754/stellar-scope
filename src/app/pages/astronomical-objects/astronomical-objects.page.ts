@@ -1,17 +1,30 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton } from '@ionic/angular/standalone';
-import { IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonCol, IonRow, IonGrid  } from '@ionic/angular/standalone';
+import { ModalController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular'; 
+import { StellariumModalComponent } from '../../stellarium-modal/stellarium-modal.component';
 
 @Component({
   selector: 'app-astronomical-objects',
   templateUrl: './astronomical-objects.page.html',
   styleUrls: ['./astronomical-objects.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle,IonCol, IonRow, IonGrid, IonToolbar, IonBackButton, IonCard,IonCardTitle,IonCardHeader,  IonCardContent, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class AstronomicalObjectsPage {
+
+  constructor(private modalController: ModalController) {}
+
+  // Function to open the modal with Stellarium
+  async openStellariumModal() {
+    const modal = await this.modalController.create({
+      component: StellariumModalComponent,
+      cssClass: 'large-modal'
+    });
+    return await modal.present();
+  } 
+
   featuredObjects = [
     {
       name: 'Saturn',

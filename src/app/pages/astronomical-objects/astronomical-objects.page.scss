@@ -87,4 +87,18 @@ ul {
     }
   }
   
+  .gradient-border-button {
+    --background: transparent;
+  --color: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  border: 2px solid transparent;
+  background-image: linear-gradient(to right, #07306f, #42a5f5);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border-radius: 5px;
+  }
   
