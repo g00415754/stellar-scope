@@ -1,25 +1,37 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/explore"></ion-back-button>
     </ion-buttons>
-    <ion-title class="center-title">Favourites</ion-title>
+    <ion-title class="center-title">Your Favourites</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding center-content content-wrapper">
+  <h1>Explore Your Favourited Celestial Objects</h1><br>
+  <p>Revisit the stars, planets, and galaxies you've saved to your favourites.</p>
+
   <ion-grid>
     <ion-row>
-      <ion-col size="6" size-md="4" *ngFor="let object of favouriteObjects">
-        <ion-card>
-          <img *ngIf="object.imageUrl" [src]="object.imageUrl" alt="image" />
+      <ion-col size="12" size-sm="6" size-md="4" *ngFor="let object of favouriteObjects">
+        <ion-card class="object-card">
           <ion-card-header>
-            <ion-card-title>{{ object.name }}</ion-card-title>
-            <ion-card-subtitle>{{ object.type }}</ion-card-subtitle>
+            <div class="card-title-wrapper">
+              <ion-card-title>{{ object.name }}</ion-card-title>
+              <ion-icon
+                [name]="isFavourite(object.name) ? 'star' : 'star-outline'"
+                (click)="toggleFavourite(object.name); $event.stopPropagation();"
+                class="favourite-icon"
+              ></ion-icon>
+            </div>
+            <p class="object-subtitle">{{ object.type }} • Best viewed: {{ object.viewTime }}</p>
           </ion-card-header>
+          
           <ion-card-content>
-            <p>{{ object.description }}</p><br>
-            <ion-button [href]="object.link" target="_blank">Learn More</ion-button>
+            <a [href]="object.link" target="_blank" rel="noopener noreferrer">
+              <img *ngIf="object.imageUrl" [src]="object.imageUrl" alt="{{ object.name }}" class="object-img" />
+              <p>{{ object.description }}</p>
+            </a>
           </ion-card-content>
         </ion-card>
       </ion-col>

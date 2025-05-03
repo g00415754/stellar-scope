@@ -2,35 +2,51 @@
   text-align: center;
   width: 100%;
 }
+ion-card {
+  height: 400px;
+  position: relative; /* Ensure relative positioning to control image placement */
+  overflow: hidden; /* Hide anything that overflows the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-ion-card{
-    width: 80%;
-    margin: auto;
-  }
+ion-card-content {
+  flex-grow: 1; /* Make the content area flexible */
+}
 
-  ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  ion-card {
-    max-height: 90vh;
-    overflow-y: auto;
-    width: 100%;
-    max-width: 600px;
-  }
-  ion-card-content {
-    padding-bottom: 1rem;
-  }
+img {
+  width: 100%;
+  height: 200px; /* You can adjust the height according to your preference */
+  object-fit: cover; /* This ensures the image covers the area without distortion */
+  object-position: center; /* Centers the image in the container */
+  border-radius: 10px; /* Optional: Round the corners of the image */
+}
 
-  a{
-    text-decoration: none;
-    color: #333;
-  }
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
 
-  ion-button {
-    --background: #7c4dff !important;
-  }
-  
+.object-subtitle {
+  font-size: 0.9rem;
+  color: #6e6e6e;
+  margin-bottom: 20px;
+}
+.card-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favourite-icon {
+  color: #7c4dff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+  color: #6e6e6e;
+}

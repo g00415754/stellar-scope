@@ -1,6 +1,6 @@
-// src/app/services/favourite.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +11,22 @@ export class FavouriteService {
 
   favourites$ = this.favouritesSubject.asObservable();
 
-  constructor() {
+  constructor(private toastController: ToastController) {
     this.loadFavourites();
   }
 
-  toggleFavourite(name: string) {
+  async toggleFavourite(name: string) {
     if (this.favourites.has(name)) {
       this.favourites.delete(name);
+      await this.showToast(`${name} removed from favourites`);
     } else {
       this.favourites.add(name);
+      await this.showToast(`${name} added to favourites`);
     }
     this.saveFavourites();
     this.favouritesSubject.next(new Set(this.favourites));
   }
+  
 
   isFavourite(name: string): boolean {
     return this.favourites.has(name);
@@ -43,5 +46,15 @@ export class FavouriteService {
       this.favourites = new Set(JSON.parse(saved));
       this.favouritesSubject.next(new Set(this.favourites));
     }
+  }
+
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      cssClass: 'custom-toast',
+      position: 'top'
+    });
+    toast.present();
   }
 }
