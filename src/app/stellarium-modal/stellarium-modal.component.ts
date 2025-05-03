@@ -13,7 +13,7 @@ export class StellariumModalComponent {
 
   constructor(private modalController: ModalController) {}
 
-  // Dismiss the modal
+  // Close the modal
   dismiss() {
     this.modalController.dismiss();
   }
