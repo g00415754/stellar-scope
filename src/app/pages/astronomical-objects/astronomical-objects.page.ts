@@ -1,42 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
-import { IonicModule } from '@ionic/angular'; 
-import { Location } from '@angular/common';
-import { FavouriteService } from 'src/app/services/favourite.service';
-import { StellariumModalComponent } from '../../stellarium-modal/stellarium-modal.component';
+import { Component, OnInit } from '@angular/core'; // Importing Angular core module for component functionality
+import { CommonModule } from '@angular/common'; // Importing the common module to access common Angular features
+import { FormsModule } from '@angular/forms'; // Importing the forms module to handle form data
+import { ModalController } from '@ionic/angular'; // Importing ModalController from Ionic for modal functionalities
+import { IonicModule } from '@ionic/angular'; // Importing IonicModule for Ionic components
+import { Location } from '@angular/common'; // Importing Location for navigation functionalities
+import { FavouriteService } from 'src/app/services/favourite.service'; // Importing a custom service for managing favourites
+import { StellariumModalComponent } from '../../stellarium-modal/stellarium-modal.component'; // Importing a component for the Stellarium modal
 
 @Component({
-  selector: 'app-astronomical-objects',
-  templateUrl: './astronomical-objects.page.html',
-  styleUrls: ['./astronomical-objects.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  selector: 'app-astronomical-objects', // Selector to identify the component
+  templateUrl: './astronomical-objects.page.html', // Template for the component
+  styleUrls: ['./astronomical-objects.page.scss'], // Stylesheet for the component
+  standalone: true, // Indicates that this is a standalone component
+  imports: [IonicModule, CommonModule, FormsModule] // Specifies imported modules for the component
 })
-export class AstronomicalObjectsPage implements OnInit{
+export class AstronomicalObjectsPage implements OnInit { // Class definition for the component
 
+  // Constructor to inject services for modal, location, and favourites management
   constructor(private modalController: ModalController, private location: Location, private favouriteService: FavouriteService) {}
 
+  // Function to navigate back to the previous page
   goBack() {
     this.location.back();
   }
 
+  // On initialization, load saved favourites
   ngOnInit() {
-    // Load saved dark mode preference from localStorage
     this.loadFavourites();
   }
-  
-  
-  // Function to open the modal with Stellarium
+
+  // Function to open the Stellarium modal
   async openStellariumModal() {
     const modal = await this.modalController.create({
-      component: StellariumModalComponent,
-      cssClass: 'large-modal'
+      component: StellariumModalComponent, // Specify which component to display inside the modal
+      cssClass: 'large-modal' // Custom CSS class for modal styling
     });
-    return await modal.present();
-  } 
+    return await modal.present(); // Display the modal
+  }
 
+  // Array holding featured astronomical objects with their details
   featuredObjects = [
     {
       name: 'Saturn',
@@ -111,31 +113,36 @@ export class AstronomicalObjectsPage implements OnInit{
     }
   ];
   
-  selectedType: string = '';
+  selectedType: string = ''; // Initially no type is selected for filtering
 
+  // Getter to filter featured objects based on selected type
   get filteredObjects() {
-    if (!this.selectedType) return this.featuredObjects;
-    return this.featuredObjects.filter(obj => obj.type === this.selectedType);
+    if (!this.selectedType) return this.featuredObjects; // If no type is selected, return all objects
+    return this.featuredObjects.filter(obj => obj.type === this.selectedType); // Filter based on selected type
   }
 
-  favourites: Set<string> = new Set();
+  favourites: Set<string> = new Set(); // Set to store favourite astronomical objects
 
+  // Toggle function to add/remove objects from favourites
   toggleFavourite(name: string) {
-    this.favouriteService.toggleFavourite(name);
+    this.favouriteService.toggleFavourite(name); // Call service to toggle favourite status
   }
-  
+
+  // Check if an object is a favourite
   isFavourite(name: string): boolean {
-    return this.favouriteService.isFavourite(name);
+    return this.favouriteService.isFavourite(name); // Call service to check favourite status
   }
 
+  // Save favourites to localStorage
   saveFavourites() {
-    localStorage.setItem('favouriteObjects', JSON.stringify([...this.favourites]));
+    localStorage.setItem('favouriteObjects', JSON.stringify([...this.favourites])); // Save favourites to localStorage
   }
 
+  // Load favourites from localStorage
   loadFavourites() {
-    const saved = localStorage.getItem('favouriteObjects');
+    const saved = localStorage.getItem('favouriteObjects'); // Retrieve saved favourites
     if (saved) {
-      this.favourites = new Set(JSON.parse(saved));
+      this.favourites = new Set(JSON.parse(saved)); // Parse and load favourites if present
     }
   }
 

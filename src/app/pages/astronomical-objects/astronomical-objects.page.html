@@ -1,24 +1,34 @@
+<!-- Header Section: Contains the back button and the title of the page -->
 <ion-header>
   <ion-toolbar>
+    <!-- Back button that navigates to the previous page (using defaultHref="/" to redirect to the homepage if no history) -->
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <!-- Title of the page, centered using the custom CSS class 'center-title' -->
     <ion-title class="center-title">Explore the Sky</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Content Section: Contains the main content of the page -->
 <ion-content class="ion-padding center-content content-wrapper">
+  <!-- Main heading to introduce the user to the experience -->
   <h1>Discover the Stars that Light Up the Night Sky</h1><br>
-  <p>Zoom in to explore individual stars, or switch to a different location to see how the night sky looks from across
-    the globe.</p>
+  <!-- Description explaining the purpose of the page -->
+  <p>Zoom in to explore individual stars, or switch to a different location to see how the night sky looks from across the globe.</p>
 
+  <!-- Button to trigger the display of a celestial map (likely opens a modal or new page) -->
   <ion-button expand="full" (click)="openStellariumModal()" class="gradient-border-button" fill="clear">View Celestial Map</ion-button>
 
+  <!-- Spacer for visual separation -->
   <br><br><br>
 
+  <!-- Filter by celestial object type (Planet, Star, Galaxy, etc.) -->
   <ion-item>
     <ion-label>Filter by Type</ion-label>
+    <!-- Dropdown select menu that binds the selected value to the 'selectedType' property in the component -->
     <ion-select [(ngModel)]="selectedType" placeholder="All Types">
+      <!-- Options for the user to select the type of celestial object -->
       <ion-select-option value="">All</ion-select-option>
       <ion-select-option value="Planet">Planet</ion-select-option>
       <ion-select-option value="Star">Star</ion-select-option>
@@ -28,25 +38,34 @@
     </ion-select>
   </ion-item>
   
+  <!-- Grid to display the celestial objects dynamically -->
   <ion-grid>
     <ion-row>
+      <!-- Loop through filteredObjects array and display each object in a column -->
       <ion-col size="12" size-sm="6" size-md="4" *ngFor="let object of filteredObjects">
+        <!-- Card to display each celestial object with its information -->
         <ion-card class="object-card">
           <ion-card-header>
+            <!-- Card header containing the name of the object and a favorite icon -->
             <div class="card-title-wrapper">
               <ion-card-title>{{ object.name }}</ion-card-title>
+              <!-- Toggle favorite icon when clicked, changes icon depending on the favorite state -->
               <ion-icon
                 [name]="isFavourite(object.name) ? 'star' : 'star-outline'"
                 (click)="toggleFavourite(object.name); $event.stopPropagation();"
                 class="favourite-icon"
               ></ion-icon>
             </div>
+            <!-- Object type and the best time to view it -->
             <p class="object-subtitle">{{ object.type }} • Best viewed: {{ object.viewTime }}</p>
           </ion-card-header>
           
           <ion-card-content>
+            <!-- Link to an external resource or more information about the object -->
             <a [href]="object.link" target="_blank" rel="noopener noreferrer">
+              <!-- If object has an image URL, display the image -->
               <img *ngIf="object.imageUrl" [src]="object.imageUrl" alt="{{ object.name }}" class="object-img" />
+              <!-- Object description -->
               <p>{{ object.description }}</p>
             </a>
           </ion-card-content>
@@ -54,20 +73,25 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  
 
-
+  <!-- Spacer for visual separation -->
   <br><br><br>
+  
+  <!-- Tips Section: Provides advice for stargazing -->
   <ion-card class="tips-card">
     <ion-card-header>
+      <!-- Title for the Stargazing Tips card, with an icon to represent the telescope -->
       <ion-card-title>
         <ion-icon name="telescope"></ion-icon> Stargazing Tips
       </ion-card-title>
+      <!-- Subtitle for the tips card -->
       <p class="subtitle">Make the most of your night sky adventure</p>
     </ion-card-header>
   
+    <!-- List of tips for stargazing -->
     <ion-card-content>
       <ul class="tips-list">
+        <!-- List items with icons to visually represent the tips -->
         <li><ion-icon name="partly-sunny-outline"></ion-icon> Check the weather for clear skies.</li>
         <li><ion-icon name="location-outline"></ion-icon> Choose a dark, light-pollution-free area.</li>
         <li><ion-icon name="moon-outline"></ion-icon> Let your eyes adjust to the darkness.</li>
@@ -79,8 +103,12 @@
     </ion-card-content>
   </ion-card>
   
+  <!-- Spacer for visual separation -->
   <br><br><br>
+  
+  <!-- Solar System 3D Models Section -->
   <div class="solar-system-container">
+    <!-- Embedded iframe for interactive 3D models of the Moon -->
     <div class="iframe-wrapper">
       <h2>The Moon</h2>
       <p class="object-subtitle">The Moon, Earth's only natural satellite, is the fifth largest moon in the Solar System.</p>
@@ -93,6 +121,7 @@
       ></iframe>
     </div>
   
+    <!-- Embedded iframe for Mercury -->
     <div class="iframe-wrapper">
       <h2>Mercury</h2>
       <p class="object-subtitle">Mercury, the closest planet to the Sun, is a small, rocky planet with extreme temperature fluctuations.</p>
@@ -105,6 +134,7 @@
       ></iframe>
     </div>
   
+    <!-- Embedded iframe for Jupiter -->
     <div class="iframe-wrapper">
       <h2>Jupiter</h2>
       <p class="object-subtitle">Jupiter is the largest planet in the Solar System, famous for its Great Red Spot and numerous moons.</p>
