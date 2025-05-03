@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular'; 
-
+import { Location } from '@angular/common';
 import { StellariumModalComponent } from '../../stellarium-modal/stellarium-modal.component';
 
 @Component({
@@ -15,8 +15,18 @@ import { StellariumModalComponent } from '../../stellarium-modal/stellarium-moda
 })
 export class AstronomicalObjectsPage implements OnInit{
 
-  constructor(private modalController: ModalController) {}
+  constructor(private modalController: ModalController, private location: Location) {}
 
+  goBack() {
+    this.location.back();
+  }
+
+  ngOnInit() {
+    // Load saved dark mode preference from localStorage
+    this.loadFavourites();
+  }
+  
+  
   // Function to open the modal with Stellarium
   async openStellariumModal() {
     const modal = await this.modalController.create({
@@ -109,10 +119,6 @@ export class AstronomicalObjectsPage implements OnInit{
 
   favourites: Set<string> = new Set();
 
-  ngOnInit() {
-    this.loadFavourites();
-  }
-
   toggleFavourite(objectName: string) {
     if (this.favourites.has(objectName)) {
       this.favourites.delete(objectName);
@@ -136,4 +142,5 @@ export class AstronomicalObjectsPage implements OnInit{
       this.favourites = new Set(JSON.parse(saved));
     }
   }
+
 }
