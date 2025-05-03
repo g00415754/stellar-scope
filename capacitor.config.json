@@ -1,0 +1,13 @@
+{
+    "appId": "com.example.app",
+    "appName": "Stellar Scope",
+    "webDir": "www",
+    "bundledWebRuntime": false, 
+    "plugins": {
+      
+    },
+    "ios": {
+      "minDeploymentTarget": "11.0" 
+    }
+  }
+  
