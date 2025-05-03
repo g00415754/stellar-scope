@@ -3,15 +3,15 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Sun & Moon Info</ion-title>
+    <ion-title class="center-title">Sun & Moon Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-card *ngIf="data">
+  <ion-card *ngIf="data; else loading">
     <ion-card-header>
-      <ion-card-title>Astronomy for Galway</ion-card-title>
+      <ion-card-title>Sun & Moon Info</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p><strong>Sunrise:</strong> {{ data.sunrise }}</p>
@@ -19,9 +19,14 @@
       <p><strong>Moonrise:</strong> {{ data.moonrise }}</p>
       <p><strong>Moonset:</strong> {{ data.moonset }}</p>
       <p><strong>Moon Phase:</strong> {{ data.moon_phase }}</p>
+      <p><strong>Moon Illumination:</strong> {{ data.moon_illumination }}%</p>
     </ion-card-content>
   </ion-card>
-
-  <ion-spinner *ngIf="!data"></ion-spinner>
+  
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading Sun & Moon Info...</p>
+  </ng-template>
+  
 
 </ion-content>

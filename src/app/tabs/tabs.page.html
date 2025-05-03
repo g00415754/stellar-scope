@@ -1,0 +1,33 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <!-- Astronomical Objects Tab -->
+    <ion-tab-button tab="astronomical-objects" (click)="goToAstroObjects()">
+      <ion-icon name="planet-outline"></ion-icon>
+      <ion-label>Explore the Sky</ion-label>
+    </ion-tab-button>
+
+    <!-- Astronomical Events Tab -->
+    <ion-tab-button tab="astronomical-events" (click)="goToAstronomicalEvents()">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>Astro of the Day</ion-label>
+    </ion-tab-button>
+
+    <!-- Moon Tab Button (Center Tab) -->
+    <ion-tab-button tab="home" class="moon-tab-button" (click)="goToHome()">
+      <ion-icon name="moon-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <!-- Sun & Moon Tab -->
+    <ion-tab-button tab="sun-moon-info" (click)="goToSunMoonInfo()">
+      <ion-icon name="sunny-outline"></ion-icon>
+      <ion-label>Sun & Moon</ion-label>
+    </ion-tab-button>
+
+    <!-- New Feature Tab -->
+    <ion-tab-button tab="new-feature">
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-label>Highlights</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

@@ -5,21 +5,25 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- This is empty for now, as per your request -->
+  <!-- Welcome Section -->
+  <div class="welcome">
+    <h2>Welcome, Stargazer!</h2>
+    <p>{{ getTimeOfDay() }}, {{ todayDate | date: 'fullDate' }}</p>
+  </div>
+
+  <!-- Astrological Event of the Day -->
+  <div class="card event-of-the-day">
+    <h3>Astrological Event of the Day</h3>
+    <p>{{ eventOfTheDay }}</p>
+  </div>
+
+  <!-- Zodiac Sign of the Day -->
+  <div class="card zodiac-sign">
+    <h3>Zodiac Sign of the Day</h3>
+    <p>{{ zodiacSignOfTheDay }}</p>
+  </div>
+
 </ion-content>
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="astronomical-objects" (click)="goToAstroObjects()">
-      <ion-label>Explore the Sky</ion-label>
-    </ion-tab-button>
 
-    <ion-tab-button tab="astronomical-events" (click)="goToAstronomicalEvents()">
-      <ion-label>Astronomy of the Day</ion-label>
-    </ion-tab-button>
 
-    <ion-tab-button tab="sun-moon-info" (click)="goToSunMoonInfo()">
-      <ion-label>Sun & Moon</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>

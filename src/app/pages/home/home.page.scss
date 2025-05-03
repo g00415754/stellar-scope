@@ -1,62 +1,19 @@
 .center-title {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-  }
-  /* Set image as background */
-  .card-bg {
-    background-size: cover;
-    background-position: center center;
-    position: relative;
-    height: 450px; /* Adjust as needed */
-    width: 95%; /* Default for mobile */
-    margin: 0 auto 50px auto;
-    transition: width 0.3s ease;
-  
-    @media (min-width: 768px) {
-      width: 60%;
-    }
-  }
-  
-  
-  /* Specific background images for each card */
-  .card-bg:nth-child(1) {
-    background-image: url('/assets/stars.avif');
-  }
-  
-  .card-bg:nth-child(2) {
-    background-image: url('/assets/space.jpg');
-  }
-  
-  .card-bg:nth-child(3) {
-    background-image: url('/assets/sun.jpeg');
-  }
-  
-  /* Add a solid background color behind text */
-  .card-text-wrapper {
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for contrast */
-    color: white;
-    padding: 20px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  /* Title and text styling */
-  .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .card-text {
-    font-size: 1rem;
-    margin-bottom: 15px;
-  }
-  
-  /* Button styling */
-  ion-button {
-    margin-top: 10px;
-  }
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
 
-  
-    
+ion-tab-bar {
+  position: relative;
+  height: 70px;
+  background-color: #fff;
+}
+
+ion-tab-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
