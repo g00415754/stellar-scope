@@ -1,67 +1,85 @@
 <ion-header>
+  <!-- Toolbar containing the title of the page -->
   <ion-toolbar>
+    <!-- Centered page title -->
     <ion-title class="center-title">Stellar Scope</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Welcome section -->
   <div class="welcome-section">
     <div class="svg-container">
+      <!-- SVG image to represent a stargazer icon -->
       <img src="assets/space3.svg" alt="Stargazer Icon" class="stargazer-svg"/>
     </div>
     <div class="welcome-text">
+      <!-- Dynamic greeting and current date -->
       <h2>Good {{ getTimeOfDay() }}, <span>Stargazer</span>!</h2>
       <p>Today is {{ todayDate | date: 'fullDate' }}</p>
     </div>
   </div>
-    <!-- Container for both cards -->
-    <div class="cards-container">
-      <!-- Astrological Event of the Day -->
-      <ion-card class="card event-of-the-day">
-        <ion-card-header>
-          <ion-icon name="moon-outline" size="large"></ion-icon>
-          <ion-card-title>Astrological Event of the Day</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>{{ eventOfTheDay }}</p>
-        </ion-card-content>
-      </ion-card>
 
-      <!-- Zodiac Sign of the Day -->
-      <ion-card class="card zodiac-sign">
-        <ion-card-header>
-          <ion-icon name="star-outline" size="large"></ion-icon>
-          <ion-card-title>Zodiac Sign of the Day</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>{{ zodiacSignOfTheDay }}</p>
-        </ion-card-content>
-      </ion-card>
-  
-    <!--Astrology Tip of the Day-->
+  <!-- Container for cards that display astrological information -->
+  <div class="cards-container">
+    <!-- Card for displaying Astrological Event of the Day -->
+    <ion-card class="card event-of-the-day">
+      <ion-card-header>
+        <!-- Icon representing the moon -->
+        <ion-icon name="moon-outline" size="large"></ion-icon>
+        <!-- Title of the card -->
+        <ion-card-title>Astrological Event of the Day</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- The dynamic event of the day -->
+        <p>{{ eventOfTheDay }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card for displaying Zodiac Sign of the Day -->
+    <ion-card class="card zodiac-sign">
+      <ion-card-header>
+        <!-- Icon representing a star -->
+        <ion-icon name="star-outline" size="large"></ion-icon>
+        <!-- Title of the card -->
+        <ion-card-title>Zodiac Sign of the Day</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- The dynamic zodiac sign of the day -->
+        <p>{{ zodiacSignOfTheDay }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card for displaying Astrology Tip of the Day -->
     <ion-card class="card astrology-tip">
       <ion-card-header>
+        <!-- Icon representing a light bulb -->
         <ion-icon name="bulb-outline" size="large"></ion-icon>
+        <!-- Title of the card -->
         <ion-card-title>Astrology Tip of the Day</ion-card-title>
       </ion-card-header>
       <ion-card-content>
+        <!-- The dynamic astrology tip of the day -->
         <p>{{ astrologyTipOfTheDay }}</p>
       </ion-card-content>
     </ion-card>
   </div>
 
- <!-- Quick Links Section -->
-<div class="quick-links-container">
-  <ion-card *ngFor="let link of quickLinks" class="card quick-link-card" (click)="goToPage(link.link)">
-    <ion-card-header>
-      <!-- SVG as an image source -->
-      <img [src]="link.icon" alt="icon" class="link-icon" /><br>
-      <ion-card-title>{{ link.title }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ link.subtitle }}</p>
-    </ion-card-content>
-  </ion-card>
-</div>
+  <!-- Quick Links Section -->
+  <div class="quick-links-container">
+    <!-- Loop through quickLinks array to create individual link cards -->
+    <ion-card *ngFor="let link of quickLinks" class="card quick-link-card" (click)="goToPage(link.link)">
+      <ion-card-header>
+        <!-- Displaying the icon for the link -->
+        <img [src]="link.icon" alt="icon" class="link-icon" /><br>
+        <!-- Title for the link card -->
+        <ion-card-title>{{ link.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Subtitle for the link card -->
+        <p>{{ link.subtitle }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>

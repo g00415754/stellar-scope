@@ -9,16 +9,16 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule] // Import necessary modules for Ionic and forms
 })
 export class HomePage {
 
-  todayDate: Date = new Date();
-  eventOfTheDay!: string;
-  zodiacSignOfTheDay!: string;
-  astrologyTipOfTheDay!: string;
+  todayDate: Date = new Date(); // Store today's date
+  eventOfTheDay!: string; // Placeholder for the event of the day
+  zodiacSignOfTheDay!: string; // Placeholder for the zodiac sign of the day
+  astrologyTipOfTheDay!: string; // Placeholder for the astrology tip of the day
 
-  // Array of astrology tips
+  // Array of astrology tips to display a random tip each day
   astrologyTips: string[] = [
     "Focus on grounding activities today, especially for earth signs.",
     "It's a good day to start new projects, especially for fire signs.",
@@ -30,8 +30,7 @@ export class HomePage {
     "Trust your intuition today, especially for water signs."
   ];
 
-
-  // Define arrays for events and zodiac signs
+  // Array of astrological events to display a random event of the day
   astrologicalEvents: string[] = [
     'Full Moon in Scorpio! A time for emotional breakthroughs.',
     'Mercury Retrograde ends today. Time for new beginnings.',
@@ -39,6 +38,7 @@ export class HomePage {
     'Venus enters Gemini! Expect more socializing and communication.'
   ];
 
+  // Array of zodiac signs and their daily advice
   zodiacSigns: string[] = [
     'Aries - Take bold actions today, trust your instincts.',
     'Taurus - Focus on stability and practicality today.',
@@ -54,61 +54,65 @@ export class HomePage {
     'Pisces - Embrace intuition and emotional clarity.'
   ];
   
-  // Array for Quick Links
+  // Array for quick links that provide easy navigation options
   quickLinks: Array<any> = [
     {
       title: 'Sun and Moon Info',
       subtitle: 'Learn about the sun and moon positions today.',
-      link: '/sun-moon-info',
-      icon: '/assets/moon.svg',
+      link: '/sun-moon-info', // Link to the sun and moon info page
+      icon: '/assets/moon.svg', // Icon for the quick link
     },
     {
       title: 'Astronomy of the Day',
       subtitle: 'Discover NASAs image of the day.',
-      link: '/astronomical-objects',
-      icon: '/assets/nasa.svg',
+      link: '/astronomical-objects', // Link to the astronomy page
+      icon: '/assets/nasa.svg', // Icon for the quick link
     },
     {
       title: 'Explore Space',
       subtitle: 'Learn about the universe and all its many floating objects.',
-      link: '/astronimical-events',
-      icon: '/assets/space.svg',
+      link: '/astronimical-events', // Link to the space exploration page
+      icon: '/assets/space.svg', // Icon for the quick link
     },
     {
       title: 'Favourites',
       subtitle: 'View all your saved astronomical favourites.',
-      link: '/favourites',
-      icon: '/assets/save.svg',
+      link: '/favourites', // Link to the favourites page
+      icon: '/assets/save.svg', // Icon for the quick link
     }
   ];
+
   constructor(private navCtrl: NavController, private location: Location) {
+    // Call the methods to set random event and zodiac sign of the day, and astrology tip of the day
     this.getRandomEventAndZodiac();
     this.astrologyTipOfTheDay = this.getRandomTip();
   }
 
-  // Navigate to the link
+  // Navigate to the specified page when called
   goToPage(pageLink: string) {
-    this.navCtrl.navigateForward(pageLink);
+    this.navCtrl.navigateForward(pageLink); // Navigate forward to the given page
   }
 
+  // Method to get the current time of day (Morning, Afternoon, Evening)
   getTimeOfDay(): string {
-    const hours = new Date().getHours();
-    if (hours < 12) return 'Morning';
-    else if (hours < 18) return 'Afternoon';
-    else return 'Evening';
+    const hours = new Date().getHours(); // Get the current hour
+    if (hours < 12) return 'Morning'; // Morning if before 12 PM
+    else if (hours < 18) return 'Afternoon'; // Afternoon if between 12 PM and 6 PM
+    else return 'Evening'; // Evening if after 6 PM
   }
 
-   // Method to get a random tip from the array
-   getRandomTip(): string {
-    const randomIndex = Math.floor(Math.random() * this.astrologyTips.length);
-    return this.astrologyTips[randomIndex];
+  // Method to get a random tip from the astrology tips array
+  getRandomTip(): string {
+    const randomIndex = Math.floor(Math.random() * this.astrologyTips.length); // Get a random index
+    return this.astrologyTips[randomIndex]; // Return the randomly selected tip
   }
-  // Randomly select an event and zodiac sign
+
+  // Method to randomly select an event and zodiac sign from the respective arrays
   getRandomEventAndZodiac() {
-    const randomEventIndex = Math.floor(Math.random() * this.astrologicalEvents.length);
-    const randomZodiacIndex = Math.floor(Math.random() * this.zodiacSigns.length);
+    const randomEventIndex = Math.floor(Math.random() * this.astrologicalEvents.length); // Get random event index
+    const randomZodiacIndex = Math.floor(Math.random() * this.zodiacSigns.length); // Get random zodiac index
 
-    this.eventOfTheDay = this.astrologicalEvents[randomEventIndex];
-    this.zodiacSignOfTheDay = this.zodiacSigns[randomZodiacIndex];
+    this.eventOfTheDay = this.astrologicalEvents[randomEventIndex]; // Set the event of the day
+    this.zodiacSignOfTheDay = this.zodiacSigns[randomZodiacIndex]; // Set the zodiac sign of the day
   }
 }
