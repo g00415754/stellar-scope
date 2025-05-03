@@ -1,21 +1,33 @@
+<!-- Header section with back button and page title -->
 <ion-header>
   <ion-toolbar>
+    <!-- Back button to navigate to the root page -->
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <!-- Title centered in the toolbar -->
     <ion-title class="center-title">Sun & Moon</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Main content area with padding -->
 <ion-content class="ion-padding">
   <div class="sun-moon-info-container">
+
+    <!-- Card containing sun and moon information -->
     <div class="info-card">
+      <!-- Only display the card if 'data' is available; otherwise show loading spinner -->
       <ion-card *ngIf="data; else loading">
         <ion-card-header>
-          <p *ngIf="location"><ion-icon name="location-outline"></ion-icon> {{ location }}</p>
-
+          <!-- Display the user's location if available -->
+          <p *ngIf="location">
+            <ion-icon name="location-outline"></ion-icon> {{ location }}
+          </p>
+          <!-- Title of the card -->
           <ion-card-title>Sun & Moon Today</ion-card-title>
         </ion-card-header>
+
+        <!-- Display sun and moon rise/set times, phase, and illumination -->
         <ion-card-content>
           <p><strong>Sunrise:</strong> {{ data.sunrise }}</p>
           <p><strong>Sunset:</strong> {{ data.sunset }}</p>
@@ -26,15 +38,17 @@
         </ion-card-content>
       </ion-card>
 
+      <!-- Loading state if 'data' is not yet available -->
       <ng-template #loading>
         <ion-spinner name="crescent"></ion-spinner>
         <p>Loading Sun & Moon Info...</p>
       </ng-template>
     </div>
 
-    <!-- SVG on the Right -->
+    <!-- Right-side SVG illustration for visual appeal -->
     <div class="svg-container">
       <img src="assets/sun.svg" alt="Sun and Moon Icon" class="sun-moon-svg" />
     </div>
+
   </div>
 </ion-content>

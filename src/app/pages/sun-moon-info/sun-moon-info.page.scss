@@ -1,32 +1,37 @@
+/* Center the ion-title text within the toolbar */
 .center-title {
   text-align: center;
   width: 100%;
 }
 
+/* Container holding the sun/moon info card and the SVG illustration */
 .sun-moon-info-container {
   display: flex;
-  justify-content: center; /* Center the whole group horizontally */
-  align-items: center;
+  justify-content: center; /* Center the contents horizontally */
+  align-items: center;      /* Vertically align items in the center */
   padding: 20px;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  gap: 20px; /* Space between elements */
-  text-align: left;
+  flex-wrap: wrap;          /* Allow elements to wrap on smaller screens */
+  gap: 20px;                /* Space between the card and SVG */
+  text-align: left;         /* Align text inside cards to the left */
 }
 
+/* Styling for the card holding sun and moon data */
 .info-card {
-  flex: 0 1 500px; /* Limit width, shrink if needed */
-  max-width: 100%;
+  flex: 0 1 500px;           /* Take up to 500px width, shrink if needed */
+  max-width: 100%;           /* Ensure it doesn’t exceed container width */
 }
 
+/* Container for the SVG icon */
 .svg-container {
-  flex: 0 1 300px;
-  max-width: 100%;
+  flex: 0 1 300px;           /* Take up to 300px width, shrink if needed */
+  max-width: 100%;           /* Prevent overflowing */
   display: flex;
-  justify-content: center;
+  justify-content: center;   /* Center the SVG horizontally within the container */
 }
 
+/* Styling for the SVG image */
 .sun-moon-svg {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
+  width: 100%;               /* Take full width of its container */
+  max-width: 300px;          /* Do not exceed 300px */
+  height: auto;              /* Maintain aspect ratio */
 }
