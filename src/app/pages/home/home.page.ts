@@ -78,7 +78,7 @@ export class HomePage {
       title: 'Favourites',
       subtitle: 'View all your saved astronomical favourites.',
       link: '/favourites',
-      icon: '',
+      icon: '/assets/save.svg',
     }
   ];
   constructor(private navCtrl: NavController, private location: Location) {

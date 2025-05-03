@@ -28,6 +28,8 @@
     <ion-tab-button tab="favourites" (click)="goToFavourites()">
       <ion-icon name="star-outline"></ion-icon>
       <ion-label>Favourites</ion-label>
+      <!-- Display the badge on the Favourites tab if there are favourites -->
+      <ion-badge *ngIf="favouriteCount > 0" color="danger">{{ favouriteCount }}</ion-badge>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

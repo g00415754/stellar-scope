@@ -94,7 +94,7 @@ export class FavouritesPage{
   ];
 
   favouriteObjects: AstronomicalObject[] = [];
-
+  
   constructor(private favouriteService: FavouriteService) {}
 
   ionViewWillEnter() {
