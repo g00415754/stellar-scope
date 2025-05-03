@@ -110,6 +110,10 @@ export class FavouritesPage implements OnDestroy {
     });
   }
 
+  get isEmpty(): boolean {
+    return this.favouriteObjects.length === 0;
+  }
+  
   isFavourite(name: string): boolean {
     return this.favouriteService.isFavourite(name);
   }

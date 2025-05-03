@@ -8,8 +8,11 @@
 </ion-header>
 
 <ion-content class="ion-padding center-content content-wrapper">
-  <h1>Explore Your Favourited Celestial Objects</h1><br>
+  <h1>Explore Your Favourited Celestial Objects</h1>
   <p>Revisit the stars, planets, and galaxies you've saved to your favourites.</p>
+
+  <br><br>
+  <h1 *ngIf="isEmpty" class="nothing-saved">Nothing Saved Yet</h1>
 
   <ion-grid>
     <ion-row>
