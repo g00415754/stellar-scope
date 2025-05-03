@@ -1,38 +1,51 @@
 <ion-header>
+  <!-- Toolbar at the top of the page -->
   <ion-toolbar>
     <ion-buttons slot="start">
+      <!-- Back button that navigates to the home page -->
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title class="center-title">Your Favourites</ion-title>
+    <ion-title class="center-title">Your Favourites</ion-title> <!-- Title of the page -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding center-content content-wrapper">
+  <!-- Main content section -->
   <h1>Explore Your Favourited Celestial Objects</h1>
+  <!-- Brief description -->
   <p>Revisit the stars, planets, and galaxies you've saved to your favourites.</p>
 
+  <!-- If there are no saved favourites, display this message -->
   <br><br>
   <h1 *ngIf="isEmpty" class="nothing-saved">Nothing Saved Yet</h1>
 
+  <!-- Grid to display favourite objects -->
   <ion-grid>
     <ion-row>
+      <!-- Loop through the list of favourite objects -->
       <ion-col size="12" size-sm="6" size-md="4" *ngFor="let object of favouriteObjects">
+        <!-- Card for each object -->
         <ion-card class="object-card">
           <ion-card-header>
+            <!-- Card header contains the object name and a star icon to toggle favourites -->
             <div class="card-title-wrapper">
-              <ion-card-title>{{ object.name }}</ion-card-title>
+              <ion-card-title>{{ object.name }}</ion-card-title> <!-- Object name -->
+              <!-- Favourite icon: filled star if it's a favourite, outlined if not -->
               <ion-icon
                 [name]="isFavourite(object.name) ? 'star' : 'star-outline'"
                 (click)="toggleFavourite(object.name); $event.stopPropagation();"
                 class="favourite-icon"
               ></ion-icon>
             </div>
-            <p class="object-subtitle">{{ object.type }} • Best viewed: {{ object.viewTime }}</p>
+            <p class="object-subtitle">{{ object.type }} • Best viewed: {{ object.viewTime }}</p> <!-- Type and best viewing time -->
           </ion-card-header>
           
           <ion-card-content>
+            <!-- Object link that opens in a new tab -->
             <a [href]="object.link" target="_blank" rel="noopener noreferrer">
+              <!-- Object image with conditional rendering -->
               <img *ngIf="object.imageUrl" [src]="object.imageUrl" alt="{{ object.name }}" class="object-img" />
+              <!-- Object description -->
               <p>{{ object.description }}</p>
             </a>
           </ion-card-content>

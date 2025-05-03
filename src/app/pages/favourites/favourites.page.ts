@@ -1,28 +1,30 @@
 import { Component, OnDestroy } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FavouriteService } from 'src/app/services/favourite.service';
-import { Subscription } from 'rxjs';
+import { FavouriteService } from 'src/app/services/favourite.service';  // Importing the service for managing favourites
+import { Subscription } from 'rxjs';  // Subscription to manage the observable
 
+// Interface defining the structure of an Astronomical Object
 interface AstronomicalObject {
-  name: string;
-  type: string;
-  viewTime: string;
-  description: string;
-  imageUrl: string;
-  link: string;
+  name: string;  // Name of the celestial object
+  type: string;  // Type (e.g., planet, star, galaxy, etc.)
+  viewTime: string;  // Best time to view the object
+  description: string;  // Description of the object
+  imageUrl: string;  // Image URL for the object
+  link: string;  // Wikipedia link or detailed link for the object
 }
 
 @Component({
-  selector: 'app-favourites',
-  templateUrl: './favourites.page.html',
-  styleUrls: ['./favourites.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule],
+  selector: 'app-favourites',  // Component selector for the template
+  templateUrl: './favourites.page.html',  // The HTML template for the page
+  styleUrls: ['./favourites.page.scss'],  // The styles for the page
+  standalone: true,  // Mark the component as standalone for independent module
+  imports: [IonicModule, CommonModule],  // Import necessary modules
 })
 export class FavouritesPage implements OnDestroy {
-  private favSub: Subscription | undefined;
+  private favSub: Subscription | undefined;  // Subscription to manage the favourites observable
 
+  // Predefined list of featured astronomical objects
   featuredObjects: AstronomicalObject[] = [
       {
         name: 'Saturn',
@@ -98,31 +100,38 @@ export class FavouritesPage implements OnDestroy {
     ];
   ;
 
-  favouriteObjects: AstronomicalObject[] = [];
+  favouriteObjects: AstronomicalObject[] = [];  // Array to store the user's favourite objects
 
-  constructor(private favouriteService: FavouriteService) {}
+  constructor(private favouriteService: FavouriteService) {}  // Inject the FavouriteService
 
+  // Lifecycle hook triggered when the view is about to enter
   ionViewWillEnter() {
+    // Subscribe to the favourites observable from the FavouriteService
     this.favSub = this.favouriteService.favourites$.subscribe((favSet) => {
+      // Filter the featuredObjects array to only show those that are in the user's favourites
       this.favouriteObjects = this.featuredObjects.filter((obj) =>
-        favSet.has(obj.name)
+        favSet.has(obj.name)  // Only include objects whose names are in the favourites set
       );
     });
   }
 
+  // Getter to check if there are no favourite objects saved
   get isEmpty(): boolean {
-    return this.favouriteObjects.length === 0;
+    return this.favouriteObjects.length === 0;  // If the array is empty, return true
   }
   
+  // Check if a particular object is marked as a favourite
   isFavourite(name: string): boolean {
-    return this.favouriteService.isFavourite(name);
+    return this.favouriteService.isFavourite(name);  // Use the service to check if the object is a favourite
   }
 
+  // Toggle the favourite status of an object
   toggleFavourite(name: string): void {
-    this.favouriteService.toggleFavourite(name);
+    this.favouriteService.toggleFavourite(name);  // Call the service to toggle the favourite status
   }
 
+  // Cleanup the subscription when the component is destroyed
   ngOnDestroy() {
-    this.favSub?.unsubscribe();
+    this.favSub?.unsubscribe();  // Unsubscribe to avoid memory leaks
   }
 }
