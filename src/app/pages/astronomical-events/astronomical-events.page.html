@@ -1,32 +1,49 @@
+<!-- Header Section -->
 <ion-header>
   <ion-toolbar>
+    <!-- Back Button -->
     <ion-buttons slot="start">
+      <!-- Provides a default back navigation to the home page ("/") -->
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <!-- Title of the page -->
     <ion-title class="center-title">Astronomy of the Day</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Main Content Section -->
 <ion-content class="ion-padding">
+  <!-- Conditional Rendering: Display the APOD data if it exists, else display an error -->
   <ng-container *ngIf="apod; else errorTpl">
+    
+    <!-- Card displaying the Astronomy Picture of the Day -->
     <ion-card>
+      <!-- Display image if the APOD media type is an image -->
       <img [src]="apod.url" *ngIf="apod.media_type === 'image'" alt="NASA Astronomy Picture"/>
+      
+      <!-- Display video if the APOD media type is a video -->
       <div *ngIf="apod.media_type === 'video'">
         <iframe [src]="apod.url" frameborder="0" width="100%" height="300"></iframe>
       </div>
+      
+      <!-- Card Header containing the title and date of the APOD -->
       <ion-card-header>
         <ion-card-title>{{ apod.title }}</ion-card-title>
         <p>{{ apod.date }}</p>
       </ion-card-header>
+      
+      <!-- Card Content displaying the explanation of the APOD -->
       <ion-card-content>
         {{ apod.explanation }}
       </ion-card-content>
     </ion-card>
+    
   </ng-container>
 
+  <!-- Template for displaying an error message when the APOD data is unavailable -->
   <ng-template #errorTpl>
     <ion-text color="danger">
-      <p>{{ error }}</p>
+      <p>{{ error }}</p>  <!-- Displays the error message passed from the component -->
     </ion-text>
   </ng-template>
 </ion-content>

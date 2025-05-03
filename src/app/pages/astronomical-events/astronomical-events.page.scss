@@ -1,28 +1,33 @@
+/* Center Title Class */
 .center-title {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-  }
+  text-align: center;          /* Aligns the text to the center */
+  width: 100%;                 /* Ensures the title spans the full width of its container */
+  margin: 0 auto;              /* Centers the title horizontally within its container */
+}
 
-  ion-card{
-    width: 80%;
-    margin: auto;
-  }
+/* Ion Card Styling */
+ion-card {
+  width: 80%;                  /* Sets the width of the ion-card to 80% of the parent container */
+  margin: auto;                /* Centers the ion-card horizontally */
+}
 
-  ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  ion-card {
-    max-height: 90vh;
-    overflow-y: auto;
-    width: 100%;
-    max-width: 600px;
-  }
-  ion-card-content {
-    padding-bottom: 1rem;
-  }
-  
+/* Ion Content Styling */
+ion-content {
+  display: flex;               /* Uses flexbox layout */
+  justify-content: center;     /* Centers the content horizontally */
+  align-items: center;         /* Centers the content vertically */
+  height: 100vh;               /* Ensures the content fills the entire viewport height */
+}
+
+/* Additional Ion Card Styling */
+ion-card {
+  max-height: 90vh;            /* Restricts the card's height to 90% of the viewport height */
+  overflow-y: auto;            /* Enables vertical scrolling if the content exceeds the card's height */
+  width: 100%;                 /* Sets the ion-card's width to 100% of its container */
+  max-width: 600px;            /* Limits the maximum width of the card to 600px */
+}
+
+/* Ion Card Content Styling */
+ion-card-content {
+  padding-bottom: 1rem;        /* Adds padding at the bottom of the card content */
+}
