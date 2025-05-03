@@ -2,42 +2,24 @@
   <ion-toolbar>
     <ion-title class="center-title">Stellar Scope</ion-title>
   </ion-toolbar>
-</ion-header> 
+</ion-header>
 
-  <ion-content class="ion-padding content-centered">
-    <div class="card-wrapper">
-      <!-- Card 1 -->
-      <ion-card class="ion-no-margin card-bg">
-        <div class="card-text-wrapper">
-          <h5 class="card-title">Explore the Sky</h5>
-          <p class="card-text">
-            Discover the wonders of the night sky, from stars to constellations.
-          </p>
-          <ion-button expand="block" (click)="goToAstroObjects()">Explore</ion-button>
-        </div>
-      </ion-card>
-  
-      <!-- Card 2 -->
-      <ion-card class="ion-no-margin card-bg">
-        <div class="card-text-wrapper">
-          <h5 class="card-title">Astronomy of the Day</h5>
-          <p class="card-text">
-            Learn about celestial events happening today and stay updated with astronomy news.
-          </p>
-          <ion-button expand="block" (click)="goToAstronomicalEvents()">Explore</ion-button>
-        </div>
-      </ion-card>
-  
-      <!-- Card 3 -->
-      <ion-card class="ion-no-margin card-bg">
-        <div class="card-text-wrapper">
-          <h5 class="card-title">Sun & Moon</h5>
-          <p class="card-text">
-            Get the latest information about the sunrise, sunset, moonrise, and moon phases.
-          </p>
-          <ion-button expand="block" (click)="goToSunMoonInfo()">Explore</ion-button>
-        </div>
-      </ion-card>
-    </div>
-  </ion-content>
-  
+<ion-content class="ion-padding">
+  <!-- This is empty for now, as per your request -->
+</ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="astronomical-objects" (click)="goToAstroObjects()">
+      <ion-label>Explore the Sky</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="astronomical-events" (click)="goToAstronomicalEvents()">
+      <ion-label>Astronomy of the Day</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="sun-moon-info" (click)="goToSunMoonInfo()">
+      <ion-label>Sun & Moon</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
