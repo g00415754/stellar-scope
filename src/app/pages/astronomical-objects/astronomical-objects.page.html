@@ -33,17 +33,17 @@
       <ion-col size="12" size-sm="6" size-md="4" *ngFor="let object of filteredObjects">
         <ion-card class="object-card">
           <ion-card-header>
-            <ion-card-title>
-              {{ object.name }}
-              <ion-icon 
-                [name]="isFavourite(object.name) ? 'star' : 'star-outline'" 
-                (click)="toggleFavourite(object.name); $event.stopPropagation();" 
-                slot="end"
-                style="float: right; color: gold; cursor: pointer;">
-              </ion-icon>
-            </ion-card-title>
+            <div class="card-title-wrapper">
+              <ion-card-title>{{ object.name }}</ion-card-title>
+              <ion-icon
+                [name]="isFavourite(object.name) ? 'star' : 'star-outline'"
+                (click)="toggleFavourite(object.name); $event.stopPropagation();"
+                class="favourite-icon"
+              ></ion-icon>
+            </div>
             <p class="object-subtitle">{{ object.type }} • Best viewed: {{ object.viewTime }}</p>
           </ion-card-header>
+          
           <ion-card-content>
             <a [href]="object.link" target="_blank" rel="noopener noreferrer">
               <img *ngIf="object.imageUrl" [src]="object.imageUrl" alt="{{ object.name }}" class="object-img" />
@@ -61,7 +61,7 @@
   <ion-card class="tips-card">
     <ion-card-header>
       <ion-card-title>
-        🌌 Stargazing Tips
+        <ion-icon name="telescope"></ion-icon> Stargazing Tips
       </ion-card-title>
       <p class="subtitle">Make the most of your night sky adventure</p>
     </ion-card-header>

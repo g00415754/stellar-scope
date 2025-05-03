@@ -3,30 +3,38 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title class="center-title">Sun & Moon Info</ion-title>
+    <ion-title>Sun & Moon</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div class="sun-moon-info-container">
+    <div class="info-card">
+      <ion-card *ngIf="data; else loading">
+        <ion-card-header>
+          <p *ngIf="location"><ion-icon name="location-outline"></ion-icon> {{ location }}</p>
 
-  <ion-card *ngIf="data; else loading">
-    <ion-card-header>
-      <ion-card-title>Sun & Moon Info</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p><strong>Sunrise:</strong> {{ data.sunrise }}</p>
-      <p><strong>Sunset:</strong> {{ data.sunset }}</p>
-      <p><strong>Moonrise:</strong> {{ data.moonrise }}</p>
-      <p><strong>Moonset:</strong> {{ data.moonset }}</p>
-      <p><strong>Moon Phase:</strong> {{ data.moon_phase }}</p>
-      <p><strong>Moon Illumination:</strong> {{ data.moon_illumination }}%</p>
-    </ion-card-content>
-  </ion-card>
-  
-  <ng-template #loading>
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>Loading Sun & Moon Info...</p>
-  </ng-template>
-  
+          <ion-card-title>Sun & Moon Today</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Sunrise:</strong> {{ data.sunrise }}</p>
+          <p><strong>Sunset:</strong> {{ data.sunset }}</p>
+          <p><strong>Moonrise:</strong> {{ data.moonrise }}</p>
+          <p><strong>Moonset:</strong> {{ data.moonset }}</p>
+          <p><strong>Moon Phase:</strong> {{ data.moon_phase }}</p>
+          <p><strong>Moon Illumination:</strong> {{ data.moon_illumination }}%</p>
+        </ion-card-content>
+      </ion-card>
 
+      <ng-template #loading>
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Loading Sun & Moon Info...</p>
+      </ng-template>
+    </div>
+
+    <!-- SVG on the Right -->
+    <div class="svg-container">
+      <img src="assets/sun.svg" alt="Sun and Moon Icon" class="sun-moon-svg" />
+    </div>
+  </div>
 </ion-content>

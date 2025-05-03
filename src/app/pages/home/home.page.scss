@@ -1,19 +1,115 @@
 .center-title {
   text-align: center;
   width: 100%;
-  margin: 0 auto;
 }
 
-ion-tab-bar {
-  position: relative;
-  height: 70px;
-  background-color: #fff;
-}
-
-ion-tab-button {
+.welcome-section {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
 }
 
+.svg-container {
+  margin-right: 20px; /* Space between SVG and text */
+}
+
+.stargazer-svg {
+  height: 400px;
+}
+
+.welcome-text {
+  text-align: right;
+}
+
+.welcome-text h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.welcome-text p {
+  font-size: 1.2rem;
+  color: #555555;
+}
+
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px; /* Gap between cards */
+}
+
+.card {
+  width: 30%; /* Each card takes up 30% of the container's width */
+  margin-bottom: 20px; /* Space between rows */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Indicating that cards are clickable */
+  text-align: center;
+}
+
+.card ion-card-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Stack the icon above the title */
+  align-items: center; /* Center the items horizontally */
+  padding: 10px;
+}
+
+.card ion-icon {
+  color: #7c4dff; /* Icon color */
+  margin-bottom: 8px; /* Space between icon and title */
+}
+
+.card ion-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card ion-card-content p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Style for the quick links container */
+.quick-links-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.quick-link-card {
+  width: 48%; /* Each card takes up 45% of the container's width */
+  background-color: #f9f9f9; /* Light background for the link cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer; /* Indicating that cards are clickable */
+}
+
+.quick-link-card ion-card-header {
+  display: flex;
+  flex-direction: column; /* Stack the icon above the title */
+  align-items: center; /* Center the items horizontally */
+  padding: 10px;
+}
+
+.quick-link-card ion-icon {
+  margin-bottom: 8px; /* Space between icon and title */
+}
+
+.quick-link-card ion-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.quick-link-card ion-card-content {
+  color: #333;
+  text-align: center;
+}
+
+.quick-links-container img{
+  max-height: 200px;
+}

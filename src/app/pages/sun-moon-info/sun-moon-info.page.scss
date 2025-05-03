@@ -1,24 +1,27 @@
-.center-title {
-  text-align: center;
+.sun-moon-info-container {
+  display: flex;
+  justify-content: center; /* Center the whole group horizontally */
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 20px; /* Space between elements */
+  text-align: left;
+}
+
+.info-card {
+  flex: 0 1 500px; /* Limit width, shrink if needed */
+  max-width: 100%;
+}
+
+.svg-container {
+  flex: 0 1 300px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sun-moon-svg {
   width: 100%;
-  margin: 0 auto;
-}
-
-.astro-card {
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-  background: linear-gradient(145deg, #fdf6e3, #fffbe6);
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.01);
-  }
-}
-
-.astro-image {
-  width: 80px;
+  max-width: 300px;
   height: auto;
-  display: block;
-  margin: 10px auto 0;
 }

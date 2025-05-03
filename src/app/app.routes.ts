@@ -24,6 +24,10 @@ export const routes: Routes = [
         path: 'sun-moon-info',
         loadComponent: () => import('./pages/sun-moon-info/sun-moon-info.page').then(m => m.SunMoonInfoPage),
       },
+      {
+        path: 'favourites',
+        loadComponent: () => import('./pages/favourites/favourites.page').then( m => m.FavouritesPage)
+      },
       
     ],
   },

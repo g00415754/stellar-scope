@@ -8,3 +8,21 @@
     width: 80%;
     margin: auto;
   }
+
+  ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  ion-card {
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 600px;
+  }
+  ion-card-content {
+    padding-bottom: 1rem;
+  }
+  

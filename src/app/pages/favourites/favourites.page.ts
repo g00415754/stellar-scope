@@ -1,42 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
-import { IonicModule } from '@ionic/angular'; 
-import { Location } from '@angular/common';
 import { FavouriteService } from 'src/app/services/favourite.service';
-import { StellariumModalComponent } from '../../stellarium-modal/stellarium-modal.component';
+import { Component } from '@angular/core';
+import { IonicModule} from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+
+interface AstronomicalObject {
+  name: string;
+  type: string;
+  viewTime: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+}
 
 @Component({
-  selector: 'app-astronomical-objects',
-  templateUrl: './astronomical-objects.page.html',
-  styleUrls: ['./astronomical-objects.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  selector: 'app-favourites',
+  templateUrl: './favourites.page.html',
+  styleUrls: ['./favourites.page.scss'],
+  imports: [IonicModule, CommonModule]
 })
-export class AstronomicalObjectsPage implements OnInit{
-
-  constructor(private modalController: ModalController, private location: Location, private favouriteService: FavouriteService) {}
-
-  goBack() {
-    this.location.back();
-  }
-
-  ngOnInit() {
-    // Load saved dark mode preference from localStorage
-    this.loadFavourites();
-  }
-  
-  
-  // Function to open the modal with Stellarium
-  async openStellariumModal() {
-    const modal = await this.modalController.create({
-      component: StellariumModalComponent,
-      cssClass: 'large-modal'
-    });
-    return await modal.present();
-  } 
-
+export class FavouritesPage{
   featuredObjects = [
     {
       name: 'Saturn',
@@ -110,33 +92,15 @@ export class AstronomicalObjectsPage implements OnInit{
       link: 'https://en.wikipedia.org/wiki/Pleiades'
     }
   ];
-  
-  selectedType: string = '';
 
-  get filteredObjects() {
-    if (!this.selectedType) return this.featuredObjects;
-    return this.featuredObjects.filter(obj => obj.type === this.selectedType);
-  }
+  favouriteObjects: AstronomicalObject[] = [];
 
-  favourites: Set<string> = new Set();
+  constructor(private favouriteService: FavouriteService) {}
 
-  toggleFavourite(name: string) {
-    this.favouriteService.toggleFavourite(name);
+  ionViewWillEnter() {
+    this.favouriteService.favourites$.subscribe(favSet => {
+      this.favouriteObjects = this.featuredObjects.filter(obj => favSet.has(obj.name));
+    });
   }
   
-  isFavourite(name: string): boolean {
-    return this.favouriteService.isFavourite(name);
-  }
-
-  saveFavourites() {
-    localStorage.setItem('favouriteObjects', JSON.stringify([...this.favourites]));
-  }
-
-  loadFavourites() {
-    const saved = localStorage.getItem('favouriteObjects');
-    if (saved) {
-      this.favourites = new Set(JSON.parse(saved));
-    }
-  }
-
 }
